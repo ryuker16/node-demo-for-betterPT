@@ -34,14 +34,15 @@ router.post('/send', (req, res) => {
             .send('txt=' + req.body.sentence)
             .end(function (result) {
                 if (result.error) {
-                    console.log(result.error);
-                    res.send(500).send(result.error);
+                    console.log("Here is error: " + result.error);
+                    res.status(500).send(result.error);
                 } else {
-                    console.log(result.status + '\n' + result.body.result);
+                    console.log("Status: " + result.status + '\n' + result.body.result);
                     res.status(200).send(result.body.result);
                 }
             })
     } else {
+        console.log("Bad Sentence entered: " + req.body.sentence);
         res.status(400).send("you have no sentence entered or format is wrong");
     }
 });

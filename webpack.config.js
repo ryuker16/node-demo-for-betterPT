@@ -2,6 +2,7 @@ const {
     resolve
 } = require('path')
 const webpack = require('webpack')
+//const FlowtypePlugin = require('flowtype-loader/plugin');
 
 module.exports = {
     entry: [
@@ -23,27 +24,35 @@ module.exports = {
         publicPath: '/'
     },
     module: {
+
         rules: [{
             test: /\.jsx$/,
             exclude: /node_modules/,
             use: [
-                'babel-loader',
+                'babel-loader'
             ]
-        }, {
+        },
+        {
             test: /\.js$/,
+            exclude: /node_modules/,
             use: [
-                'babel-loader',
-            ],
-            exclude: /node_modules/
-        }, {
+                'babel-loader'
+            ]
+        },
+        {
             test: /\.css$/,
             exclude: /node_modules/,
             loader: 'css-loader'
         }]
     },
+    externals: {
+   'cheerio': 'window',
+   'react/lib/ExecutionEnvironment': true,
+   'react/lib/ReactContext': true,
+ },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin()
+        //new webpack.NamedModulesPlugin(),
     ],
 
 }

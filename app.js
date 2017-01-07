@@ -1,3 +1,5 @@
+
+
 /**
  *                    Sentence Sentiments
  *
@@ -12,7 +14,7 @@
  *  '/login/user' with valid username/password
  *
  * Currently I added one default user to the database that is valid
- * {username:"Brandon", password: "test"}
+ * {username:"brandon", password: "test"}
  *
  * Database is Mongodb collection named "sentiments" and we're using mongoose ORM
  * to connect to it. Settings for Database URL, token Secret are in '/config.json'
@@ -38,7 +40,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 /**
  * [config default configuration such as database url, token secret]
- * @type {[JSON]}'
+ * @type {JSON}
  * @return{[url : mongodb url,tokenSecret]}
  */
 const config = require('./config');
@@ -64,7 +66,8 @@ const protect = require('./routes/protected');
 
 // Express....duh
 const app = express();
-
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());

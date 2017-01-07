@@ -1,5 +1,5 @@
 /**
- *  Tests - tests our API to ensure sentiments is recieving/responding to sentences
+ *  API Tests - tests our API to ensure sentiments is recieving/responding to sentences
  *  and that our routes are authenticated/can login users in.
  *
  * Run "npm test" in Terminal/CLI to run tests
@@ -8,12 +8,13 @@
  */
 
 
-var unirest = require('unirest');
-var url = "http://localhost:3000/";
-var chai = require('chai');
+const unirest = require('unirest');
+const url = "http://localhost:3000/";
+const chai = require('chai');
 
-var should = chai.should();
-var token;
+const should = chai.should();
+
+let token;
 
 describe("Attempt to login and get Json Web Token", () => {
 
@@ -26,8 +27,8 @@ describe("Attempt to login and get Json Web Token", () => {
                 })
                 .end((result) => {
                     result.code.should.equal(200);
-                    result.body.should.be.a('string');
-                    token = result.body;
+                    result.body.token.should.be.a('string');
+                    token = result.body.token;
                     done();
                 })
         })

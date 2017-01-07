@@ -25,7 +25,7 @@ const jwt = require('jsonwebtoken');
 const schemas = require('../schemas');
 /**
  * [config default configuration such as database url, token secret]
- * @type {[JSON]}'
+ * @type {JSON}
  * @return{[url,tokenSecret]}
  */
 const config = require('../config');
@@ -38,8 +38,8 @@ var User = mongoose.model('User', schemas.userSchema);
 
 /**
  * [makeToken creates our Json web token]
- * @param  {[string]} username [username of user attempting to login]
- * @return {[Object]}          [Json Web token]
+ * @param  {string} username [username of user attempting to login]
+ * @return {Object}          [Json Web token]
  */
 function makeToken(username) {
     return jwt.sign({
@@ -56,7 +56,7 @@ function makeToken(username) {
  * @return {[response object(JWT)]}
  */
 router.post('/user', (req, res) => {
-    console.log(req.body);
+    console.log("user sending request: " +  req.body.username);
     if (req.header('Authorization')) {
         res.status(401).send("Your already logged in...stop trying");
     } else {
@@ -65,11 +65,18 @@ router.post('/user', (req, res) => {
             password: req.body.password
         }, (err, user) => {
             if (err) {
-                console.log(err);
-                res.status(401).send("Couldn't find user or password is incorrect");
+                console.log("Error: " + err);
+                res.status(401).send({error:"error retieving user account"});
+            } else if (user != null) {
+              console.log(user);
+                console.log("User " + user.username + " successfully logged in");
+                res.status(200).send({
+                  token: makeToken(req.body.username),
+                  username: req.body.username
+                });
             } else {
-                console.log("User " + req.body.username + " successfully logged in");
-                res.status(200).send(makeToken(req.body.username));
+              console.log("failed to login user " + req.body.username);
+              res.status(401).send({error:"Couldn't find username or password is incorrect"});
             }
         });
 
