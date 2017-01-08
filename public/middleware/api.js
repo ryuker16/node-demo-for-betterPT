@@ -9,7 +9,7 @@
  */
 
 type token = string | null
-const url = 'http://52.11.14.57:4500/'
+const url = 'http://localhost:4500/'
 
 function apiCall(endpoint, authenticated, sentence) {
 

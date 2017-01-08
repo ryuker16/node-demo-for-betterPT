@@ -1,5 +1,5 @@
 /**
- *  mongoose Schema
+ *  mongoose Schema for api user
  */
 
 var mongoose = require('mongoose');

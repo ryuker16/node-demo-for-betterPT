@@ -126,7 +126,7 @@ export function loginUser(creds: Profile ) {
 
     return dispatch => {
         dispatch(requestLogin(creds))
-        return fetch('http://52.11.14.57:4500/login/user', config)
+        return fetch('http://localhost:4500/login/user', config)
             .then(response =>
                 response.json().then(user => ({
                     user,
