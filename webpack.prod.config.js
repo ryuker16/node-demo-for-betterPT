@@ -1,15 +1,12 @@
-const {
-    resolve
-} = require('path')
+const {resolve}  = require('path')
 const webpack = require('webpack')
-//const FlowtypePlugin = require('flowtype-loader/plugin');
 
 module.exports = {
     entry: [
-        'react-hot-loader/patch',
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/only-dev-server',
-        './main.jsx',
+        // 'react-hot-loader/patch',
+        // 'webpack-dev-server/client?http://localhost:8080',
+        // 'webpack/hot/only-dev-server',
+        './main.jsx'
     ],
     output: {
         filename: 'bundle.js',
@@ -17,7 +14,7 @@ module.exports = {
         publicPath: '/'
     },
     context: resolve(__dirname, 'public'),
-    devtool: 'inline-source-map',
+    devtool: 'cheap-eval-source-map',
     devServer: {
         hot: true,
         contentBase: resolve(__dirname, 'dist'),
@@ -47,8 +44,12 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin(),
+        //new webpack.HotModuleReplacementPlugin(),
+        //new webpack.optimize.CommonsChunkPlugin('common.js'),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.optimize.AggressiveMergingPlugin()
     ],
 
 }
