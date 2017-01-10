@@ -57,10 +57,8 @@ function makeToken(username) {
  */
 router.post('/user', (req, res) => {
     console.log("user sending request: " +  req.body.username);
-    if (req.header('Authorization')) {
-        res.status(401).send("Your already logged in...stop trying");
-    } else {
-        User.findOne({
+
+        User.find({
             username: req.body.username,
             password: req.body.password
         }, (err, user) => {
@@ -80,7 +78,7 @@ router.post('/user', (req, res) => {
             }
         });
 
-    }
+
 });
 
 module.exports = router;

@@ -9,7 +9,7 @@
 
 
 const unirest = require('unirest');
-const url = "http://localhost:3000/";
+const url = "http://52.11.14.57:4500/";
 const chai = require('chai');
 
 const should = chai.should();
@@ -20,7 +20,7 @@ describe("Attempt to login and get Json Web Token", () => {
 
     it("logged in and returned a JWT token without error",
         (done) => {
-            unirest.post(url + 'login/user')
+            unirest.post(url + '/login/user')
                 .send({
                     username: "Brandon",
                     password: "test"

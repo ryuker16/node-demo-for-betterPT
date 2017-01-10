@@ -1,4 +1,4 @@
 {
-    "url": "localhost:27017/sentiment",
+    "url": "mongodb://localhost:27017/sentiment",
     "tokenSecret": "eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwczovL2p3dC1pZHAuZXhhbXBsZS5jb20iLCJzdWIiOiJtYWlsdG86YWVvbmVvbkBnbWFpbC5jb20iLCJuYmYiOjE0NzQyMTk5MjIsImV4cCI6MTQ3NDIyMzUyMiwiaWF0IjoxNDc0MjE5OTIyLCJqdGkiOiJpZDU1Njc3In0."
 }

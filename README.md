@@ -21,8 +21,13 @@ Database is Mongodb collection named "sentiments" and we're using mongoose ORM t
 Default Scripts to run via CLI(see package.json for more details)
 
 npm start - start api server and serve website('./dist') - hosted port 4500
+
 npm test - run mocha tests: api server mustt be running first
+
 npm run development - run webpack-dev-server with live reloading - hosted on post 8080
+
 npm run build:dev - build development un-optimized website to dist
+
 npm run build - build production optimized website output to dist
+
 flow - start flow server to check file for type errors

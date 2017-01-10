@@ -59,6 +59,7 @@ export default (store: any) => (next: any) => (action: any) => {
         sentence,
         authenticated
     } = apiCALL
+
     const [requestType, successType, errorType] = types
 
     // Passing the authenticated boolean back in our data will let us distinguish between normal and secret quotes
