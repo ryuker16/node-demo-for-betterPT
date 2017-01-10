@@ -6,7 +6,7 @@
     "test": "./node_modules/.bin/mocha --reporter spec",
     "start": "node ./bin/www",
     "development": "webpack-dev-server",
-    "build:dev": "./node_modules/.bin/webpack --config webpack.config.js",
+    "build_dev": "./node_modules/.bin/webpack --config webpack.config.js",
     "build": "./node_modules/.bin/webpack --config webpack.prod.config.js"
   },
   "dependencies": {

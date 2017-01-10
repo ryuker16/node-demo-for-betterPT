@@ -26,7 +26,7 @@ npm test - run mocha tests: api server mustt be running first
 
 npm run development - run webpack-dev-server with live reloading - hosted on post 8080
 
-npm run build:dev - build development un-optimized website to dist
+npm run build_dev - build development un-optimized website to dist
 
 npm run build - build production optimized website output to dist
 
